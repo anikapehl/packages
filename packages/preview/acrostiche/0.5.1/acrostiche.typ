@@ -204,8 +204,7 @@
 
 
 
-#let print-index(level: 1, numbering: none, outlined: false, sorted:"",
-                 title:"Acronyms Index", delimiter:":", row-gutter: 2pt, used-only: false) = {
+#let print-index(level: 1, numbering: none, outlined: false, sorted:"", title:"Acronyms Index", delimiter:":", row-gutter: 2pt, used-only: false, first_column: 10%) = {
   //Print an index of all the acronyms and their definitions.
   // Args:
   //   level: level of the heading. Default to 1.
@@ -223,9 +222,6 @@
   }
 
   context{
-    
-
-      
     let acronyms = acros.get()
     let acr-list = acronyms.keys()
 
@@ -252,7 +248,7 @@
   
     // print the acronyms
     grid(
-      columns: (20%,80%),
+      columns: (first_column, auto),
       row-gutter: row-gutter,
       ..for acr in acr-list{
         ([*#display-short(acr, plural:false)#delimiter*], display-def(acr,plural:false))
